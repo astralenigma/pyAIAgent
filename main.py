@@ -3,6 +3,8 @@ import sys
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
+# from subdirectory.filename import function_name
+from functions.get_files_info import get_files_info
 
 verbose=False
 if len(sys.argv)<2:
