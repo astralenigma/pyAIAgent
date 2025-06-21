@@ -17,4 +17,4 @@ def get_files_info(working_directory, directory=None):
     for file in os.listdir(abs_TD):
         tfile=os.path.join(abs_TD,file)
         dir_details+=f"- {file}: file_size={os.path.getsize(tfile)} bytes, is_dir={os.path.isdir(tfile)}\n"
-    print(dir_details)
+    return dir_details
