@@ -16,9 +16,7 @@ def write_file(working_directory, file_path, content):
             os.makedirs(os.path.dirname(abs_TD),exist_ok=True)
         with open(abs_TD, "w+") as f:
             f.write(content)
-    except FileExistsError as error:
+    except Exception as error:
         return f'Error: {error}'
-    except FileNotFoundError as error:
-        return f'Error: Directory not found'
 
     return f'Successfully wrote to "{file_path}" ({len(content)} characters written)'

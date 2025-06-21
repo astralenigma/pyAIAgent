@@ -21,7 +21,7 @@ def get_file_content(working_directory, file_path):
             if len(file_content_string)>=MAX_CHARS:
                 file_content_string+=f"\n[...File {file_path} truncated at 10000 characters]"
             
-    except FileNotFoundError as FNFError:
+    except Exception as FNFError:
         return f"Error: {FNFError}"
     return file_content_string
 #print(get_file_content(".","lorem.txt"))
