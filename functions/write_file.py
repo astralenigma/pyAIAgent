@@ -10,7 +10,7 @@ def write_file(working_directory, file_path, content):
             abs_TD=os.path.join(abs_WD,file_path)
     
     if(not abs_TD.startswith(abs_WD) or file_path=="../"):
-        return f'Error: Cannot list {file_path} as it is outside the permitted working directory'
+        return f'Error: Cannot write to {file_path} as it is outside the permitted working directory'
     try:
         if(not os.path.exists(os.path.dirname(abs_TD))):
             os.makedirs(os.path.dirname(abs_TD),exist_ok=True)

@@ -10,7 +10,7 @@ def get_file_content(working_directory, file_path):
             abs_TD=os.path.join(abs_WD,file_path)
     
     if(not abs_TD.startswith(abs_WD) or file_path=="../"):
-        return f'Error: Cannot list {file_path} as it is outside the permitted working directory'
+        return f'Error: Cannot read {file_path} as it is outside the permitted working directory'
     if(not os.path.isfile(abs_TD)):
         return f'Error: "{file_path}" is not a file'
     
