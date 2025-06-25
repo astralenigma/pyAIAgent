@@ -16,15 +16,15 @@ def main():
         print('\nUsage: python main.py "your prompt here" [--verbose]')
         print('Example: python main.py "How do I fix the calculator?"')
         sys.exit(1)
-        api_key = os.environ.get("GEMINI_API_KEY")
-        client = genai.Client(api_key=api_key)
-        user_prompt=" ".join(args)
-        if verbose:
-            print(f"User prompt: {user_prompt}")
-        messages = [
-            types.Content(role="user", parts=[types.Part(text=user_prompt)]),
-            ]
-        generate_content(client,messages,verbose)
+    api_key = os.environ.get("GEMINI_API_KEY")
+    client = genai.Client(api_key=api_key)
+    user_prompt=" ".join(args)
+    if verbose:
+        print(f"User prompt: {user_prompt}")
+    messages = [
+        types.Content(role="user", parts=[types.Part(text=user_prompt)]),
+        ]
+    generate_content(client,messages,verbose)
 
 def generate_content(client, messages,verbose):
     model_name='gemini-2.0-flash-001'
