@@ -1,4 +1,6 @@
 import os
+from google.genai import types
+from config import MAX_CHARS
 def get_file_content(working_directory, file_path):
     abs_WD=os.path.abspath(working_directory)
     if(file_path.startswith("/")):
@@ -14,7 +16,7 @@ def get_file_content(working_directory, file_path):
     if(not os.path.isfile(abs_TD)):
         return f'Error: "{file_path}" is not a file'
     
-    MAX_CHARS=10000
+    
     try:
         with open(abs_TD,"r") as f:
             file_content_string = f.read(MAX_CHARS)
@@ -25,3 +27,18 @@ def get_file_content(working_directory, file_path):
         return f"Error: {FNFError}"
     return file_content_string
 #print(get_file_content(".","lorem.txt"))
+
+schema_get_file_content = types.FunctionDeclaration(
+    name="get_file_content",
+    description="Reads the content of the file.",
+    parameters=types.Schema(
+        type=types.Type.OBJECT,
+        properties={
+            "file_path": types.Schema(
+                type=types.Type.STRING,
+                description="The path to the file to read the contents from.",
+            ),
+        },
+        required=["file_path"]
+    ),
+)
